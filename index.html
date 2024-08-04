@@ -21,6 +21,51 @@
   max-height: 300px; /* Adjust this value to set the desired height */
   object-fit: cover;
 }
+   /* Loader style */
+ #loader {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 9999;
+        }
+
+        #loader .spinner {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Hide content initially */
+        .content {
+            display: none;
+        }
 
 
 .img-box {
@@ -115,8 +160,13 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
-<body>
-
+<body onload="hideLoader()">
+ <!-- Loader -->
+ <div id="loader">
+  <div class="spinner"></div>
+  <div><h2>06 MEDIA</h2></div>
+</div>
+   <div class="content">
   <div class="hero_area">
     <!-- header section strats -->
    <header style="position: fixed;width: 100%;z-index: 1000;background: white;" class="header_section">
@@ -787,10 +837,15 @@ emotional fesselnd sind. Unser Fokus liegt auf:
     </div>
   </section>
   <!-- footer section -->
-
+   </div>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
-
+<script>
+    function hideLoader() {
+        document.getElementById("loader").style.display = "none";
+        document.querySelector(".content").style.display = "block";
+    }
+</script>
 </body>
 
 </html>
